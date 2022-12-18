@@ -1,0 +1,610 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    scroll-padding-top: 60px;
+    /* border: 1px solid #ffffff; */
+}
+
+:root {
+    --star-color: gold;
+    --moon-color: rgb(140, 150, 160);
+    --crater-color: rgb(131, 138, 145);
+    --window-color: rgb(60, 60, 243);
+    --building1-color: black;
+    --building2-color: rgb(51, 40, 40);
+    --building3-color: rgb(43, 56, 38);
+    --building4-color: rgb(37, 39, 49);
+    --tower-color: rgb(17, 13, 19);
+    --tower-color1: rgb(58, 43, 66);
+    --tower-light: rgb(32, 56, 194);
+    --clock-color: rgb(226, 200, 81);
+    --hand-color: black;
+    --terrain-color: rgb(6, 14, 9);
+    --header-color: rgb(24, 15, 73);
+    --background-color: rgb(3, 0, 17);
+}
+
+header {
+    background-color: var(--header-color);
+    height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    font-size: 1.2rem; 
+    position: fixed;
+    z-index: 999;
+}
+
+#welcome-section {
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+.nav-list {
+    margin: auto 10px;
+}
+
+.nav-list li {
+   display: inline-block;
+}
+
+.nav-list li > a {
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+a:active, a:focus {
+    outline: none;
+}
+
+.background {
+    position: absolute;
+    z-index: -1;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 91% 17%, rgb(122, 121, 121), var(--background-color) 15%);
+}
+
+.moon {
+    position: absolute;
+    width: 10%;
+    aspect-ratio: 1/1;
+    background-color: var(--moon-color);
+    right: 4%;
+    top: 9%;
+    border-radius: 50%;
+}
+
+.moon-crater {
+    position: absolute;
+    width: 15%;
+    aspect-ratio: 1/1;
+    background-color: var(--crater-color);
+}
+
+.moon-crater.one {
+    aspect-ratio: 1.2/1;
+    top: 10%;
+    left: 25%;
+    border-radius: 50%;
+} 
+
+.moon-crater.two {
+    width: 30%;
+    aspect-ratio: 1.2/1;
+    top: 60%;
+    left: 15%;
+    border-radius: 50%;
+}
+
+.moon-crater.three {
+    width: 20%;
+    aspect-ratio: 0.9/1;
+    border-radius: 50%;
+    top: 40%;
+    right: 10%;
+}
+
+.moon-crater.four {
+    width: 17%;
+    aspect-ratio: 1.2/1;
+    border-radius: 50% 50%;
+    top: 15%;
+    right: 30%;
+}
+
+.moon-crater.five {
+    width: 13%;
+    aspect-ratio: 1.1/1;
+    border-radius: 50%;
+    top: 35%;
+    left: 10%;
+}
+
+.moon-crater.six {
+    width: 13%;
+    aspect-ratio: 1.05/1;
+    border-radius: 50%;
+    top: 40%;
+    left: 40%;
+}
+
+.moon-crater.seven {
+    width: 13%;
+    aspect-ratio: 1/1.1;
+    border-radius: 50%;
+    top: 75%;
+    left: 60%;
+}
+
+.star {
+    position: absolute;
+    width: 2%;
+    aspect-ratio: 1/1;
+    top: 5%;
+    left: 15%;
+    background: 
+    radial-gradient(circle at 0% 0%, var(--background-color) 35%, var(--star-color) 35%, transparent 35%) , 
+    radial-gradient(circle at 100% 0%, var(--background-color) 35%, var(--star-color) 35%, transparent 35%) ,
+    radial-gradient(circle at 0% 100%, var(--background-color) 35%, var(--star-color) 35%, transparent 35%) ,
+    radial-gradient(circle at 100% 100%, var(--background-color) 35%, var(--star-color) 35%, transparent 35%) ,
+    var(--star-color);
+}
+
+.star.one {
+    top: 20%;
+    left: 45%;
+}
+
+.star.two {
+    top: 8%;
+}
+
+.star.three {
+    top: 16%;
+    left: 35%;
+}
+
+.star.four {
+    top: 25%;
+    left: 10%;
+}
+
+.star.five {
+    top: 25%;
+    left: 55%;
+}
+
+.star.six {
+    top: 23%;
+    left: 28%;
+}
+
+.star.seven {
+    top: 13%;
+    left: 60%;
+}
+
+.ground {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    top: 0;
+}
+
+.terrain {
+    position: absolute;
+    width: 100%;
+    height: 30%;
+    top: 80%;
+    border-radius: 50% 50% 10% 10%;
+    background-color: var(--terrain-color);
+    z-index: 1;
+}
+
+.hill {
+    position: absolute;
+    width: 10%;
+    aspect-ratio: 0.8/1;
+    background-color: var(--terrain-color);
+    border-radius: 50%;
+    bottom: 0%;
+    left: 70%;
+}
+
+.hill.one {
+    bottom: 10%;
+    width: 12%;
+    aspect-ratio: 1/1;
+}
+
+.hill.two {
+    bottom: 3%;
+    left: 65%;
+}
+
+.hill.three {
+    bottom: 2%;
+    left: 75%;
+}
+
+.city {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    position: absolute;
+    width: 25%;
+    left: 5%;
+    aspect-ratio: 1/1.5;
+    bottom: 14%;
+    z-index: 0;
+    transform: rotate(-3deg);
+}
+
+.building-1 {
+    width: 18%;
+    height: 60%;
+    background:
+      repeating-linear-gradient(90deg, var(--building1-color) 0%, var(--building1-color) 20%, transparent 20%, transparent 41%) ,
+      repeating-linear-gradient(0deg, var(--building1-color) 5%, var(--window-color) 5%, var(--window-color) 15%, var(--building1-color) 15%, var(--building1-color) 25%);
+}
+
+.building-2 {
+    width: 30%;
+    height: 40%;
+    background:
+      repeating-linear-gradient(90deg, var(--building2-color) 0%, var(--building2-color) 20%, transparent 20%, transparent 41%) ,
+      repeating-linear-gradient(0deg, var(--building2-color) 5%, var(--window-color) 5%, var(--window-color) 15%, var(--building2-color) 15%, var(--building2-color) 25%);
+}
+
+.building-3 {
+    position: absolute;
+    left: 35%;
+    width: 40%;
+    height: 25%;
+    background:
+      repeating-linear-gradient(90deg, var(--building3-color) 0%, var(--building3-color) 5%, transparent 5%, transparent 10%) ,
+      repeating-linear-gradient(0deg, var(--building3-color) 5%, var(--window-color) 5%, var(--window-color) 15%, var(--building3-color) 15%, var(--building3-color) 25%);
+}
+
+.building-4 {
+    position: absolute;
+    width: 20%;
+    height: 50%;
+    right: 3%;
+    background:
+      repeating-linear-gradient(0deg, var(--building4-color) 5%, var(--window-color) 5%, var(--window-color) 15%, var(--building4-color) 15%, var(--building4-color) 25%);
+}
+
+.tower {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;;
+    position: absolute;
+    right: 12%;
+    width: 25%;
+    height: 90%;
+    font-size: 6.25vw;
+}
+
+.tower-base {
+    box-sizing: content-box;
+    width: 60%;
+    border-top: 0em solid transparent;
+    border-bottom: 0.2em solid var(--tower-color);
+    border-left: 0.2em solid transparent;
+    border-right: 0.2em solid transparent;
+}
+
+.tower-column {
+    width: 55%;
+    height: 77%;
+    background:
+      linear-gradient(0deg, var(--tower-light) , transparent 15%),
+      var(--tower-color);
+}
+
+.tower-head {
+    position: relative;
+    width: 75%;
+    height: 10%;
+    background:
+        radial-gradient(circle at 50% 50%, var(--clock-color) 50%, var(--tower-color) 50%);
+}
+
+.thead-top, .thead-bottom {
+    box-sizing: content-box;
+    width: 55%;
+    height: 0%;
+    border-top: 0.1em solid var(--tower-color1);
+    border-bottom: 0.1em solid var(--tower-color1);
+    border-left: 0.1em solid var(--tower-color1);
+    border-right: 0.1em solid var(--tower-color1);
+}
+
+.thead-top {
+    border-top: 0 solid transparent;
+    border-left: 0.1em solid transparent;
+    border-right: 0.1em solid transparent;
+}
+
+.thead-bottom {
+    border-bottom: 0 solid transparent;
+    border-left: 0.1em solid transparent;
+    border-right: 0.1em solid transparent;
+}
+.tower-spire {
+    height: 5%;
+    position: relative;
+    border: 1px solid rgb(51, 16, 133);
+}
+
+.hour-hand {
+    width: 17%;
+    height: 5%;
+    background-color: var(--hand-color);
+    border: none;
+    position: absolute;
+    top: 47.5%;
+    left: 50%;
+    transform-origin: 0% 50%;
+    animation: hour-hand 3600s linear infinite;
+}
+
+.minute-hand {
+    width: 25%;
+    height: 3%;
+    background-color: var(--hand-color);
+    border: none;
+    position: absolute;
+    top: 48.5%;
+    left: 50%;
+    transform-origin: 0% 50%;
+    animation: minute-hand 60s linear infinite;
+}
+
+@keyframes hour-hand {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes minute-hand {
+    0% {
+        transform: rotate(0deg);
+    }
+    
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.intro-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: white;
+    text-align: center;
+    z-index: 1;
+}
+
+.introduction {
+    font-size: 2rem;
+}
+
+.introduction-desc {
+    font-size: 1.5rem;
+    color: gold;
+}
+
+.project-tile {
+    border-radius: 2%;
+    width: 350px;
+    height: 400px;
+    padding: 10px;
+    background:
+        radial-gradient(circle at 50% 0%, rgb(36, 36, 36), black);
+    animation: project-tile-out 0.15s linear;
+    margin-bottom: 30px;
+}
+
+.preview-image {
+    width: 330px;
+    height: 300px;
+    object-fit: cover;
+}
+
+.project-tile a {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    text-decoration: none;
+}
+
+.project-tile:hover {
+    
+    animation: project-tile-in 0.15s linear forwards;
+}
+
+@keyframes project-tile-in {
+    0% {
+        transform: translateY(0px);
+        box-shadow: 0px 0px var(--header-color);
+    }
+    
+    100% {
+        transform: translateY(10px);
+        box-shadow: 10px 10px var(--header-color);
+    }
+}
+
+@keyframes project-tile-out {
+    0% {
+        transform: translateY(10px);
+        box-shadow: 10px 10px var(--header-color);
+    }
+
+    100% {
+        transform: translateY(0px);
+        box-shadow: 0px 00px var(--header-color);
+    }
+}
+
+#projects {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--background-color);
+    padding-bottom: 4.75em;
+}
+
+.project-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    place-items: center;
+}
+
+
+
+@media (min-width: 1080px) and (max-width: 1450px) {
+    #projects {
+        height: unset;
+    }
+
+    .project-grid {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media (min-width: 730px) and (max-width: 1080px) {
+    #projects {
+        height: unset;
+    }
+    .project-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 730px) {
+    #projects {
+        height: unset;
+    }
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.projects-header {
+    color: white;
+    font-size: 2rem;
+    padding: 1em;
+    text-align: center;
+}
+
+.contact-header {
+    color: white;
+    font-size: 4rem;
+    margin: 3rem;
+    text-align: center;
+}
+
+.project-desc {
+    color: white;
+    text-align: center;
+    padding: 1em;
+    background-color: var(--header-color);
+    border-radius: 0%;
+}
+
+#contact-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    width: 100%;
+    height: 100vh;
+}
+
+.social-link {
+    font-size: 1.5rem;
+    margin: 1em;
+    text-decoration: none;
+    color: white;
+}
+
+.contact-list {
+    list-style: none;
+}
+
+.contact-list > li {
+    display: inline-block;
+    animation: contact-out 0.5s linear;
+}
+
+.contact-list > li:hover {
+    animation: contact-in 0.5s linear forwards;
+}
+
+.contact-desc {
+    color: white;
+    margin: 1rem;
+}
+
+@keyframes contact-out {
+    0% {
+        transform: rotateX(30deg) translateY(5px);
+    }
+    
+    100% {
+        transform: rotateX(0deg) translateY(0px)
+    }
+}
+
+@keyframes contact-in {
+    0% {
+        transform: rotateX(0deg) translateY(0px);
+    }
+    
+    100% {
+        transform: rotateX(30deg) translateY(5px);
+    }
+}
+
+footer {
+    height: 70px;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    border-top: 3px solid var(--header-color);
+    background-color: black;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    * {
+        scroll-behavior: smooth;
+    }
+}
